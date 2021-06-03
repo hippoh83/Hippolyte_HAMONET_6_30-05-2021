@@ -9,5 +9,5 @@
     <input type="password" class="form-control" id="password" formControlName="password">
   </div>
   <button mat-raised-button color="primary" [disabled]="loginForm.invalid" (click)="onLogin()">LOGIN</button>
-  <p class="text-danger" *ngIf="errorMsg">{{ errorMsg }}</p>
+  <p class="text-danger" *ngIf="errorMsg">Identifiants incorrects</p>
 </form>
