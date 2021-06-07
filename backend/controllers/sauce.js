@@ -59,34 +59,34 @@ exports.likedSauce = (req, res, next) => {
         switch( req.body.like ){
             case 0:
                 //l'utilisateur n'aime pas la sauce : on l'enleve du tableau like ou dislike et on  met la valeur -1
-                if(sauce.usersLiked.includes(userId)){
-                    sauce.usersLiked.splice(userId);
+                if(sauce.usersLiked.includes(req.body.userId)){
+                    sauce.usersLiked.splice(req.body.userId);
                     sauce.likes--;
                 };
-                if(sauce.usersDisliked.includes(userId)){
-                    sauce.usersDisliked.splice(userId);
+                if(sauce.usersDisliked.includes(req.body.userId)){
+                    sauce.usersDisliked.splice(req.body.userId);
                     sauce.dislikes--;
                 };
             break;
             case 1:
                 //l'utilisateur aime la sauce, si il n'a pas deja aimé, on ajoute au tableau
-                if(!sauce.usersLiked.includes(userId)){
-                    sauce.usersLiked.push(userId);
+                if(!sauce.usersLiked.includes(req.body.userId)){
+                    sauce.usersLiked.push(req.body.userId);
                     sauce.likes++;
                 };
-                if(sauce.usersDisliked.includes(userId)){
-                    sauce.usersDisliked.splice(userId);
+                if(sauce.usersDisliked.includes(req.body.userId)){
+                    sauce.usersDisliked.splice(req.body.userId);
                     sauce.dislikes--;
                 }
             break;
             case -1:
                 //si il a deja dislike la sauce, on enleve du tableau et valeur -1
-                if(!sauce.usersDisliked.includes(userId)){
-                    sauce.usersDisliked.push(userId);
+                if(!sauce.usersDisliked.includes(req.body.userId)){
+                    sauce.usersDisliked.push(req.body.userId);
                     sauce.dislikes++;
                 };
-                if(sauce.usersLiked.includes(userId)){
-                    sauce.usersLiked.splice(userId);
+                if(sauce.usersLiked.includes(req.body.userId)){
+                    sauce.usersLiked.splice(req.body.userId);
                     sauce.likes--;
                 }
             break;
